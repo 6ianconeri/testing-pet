@@ -25,7 +25,7 @@ jobs:
         playwright install chromium --with-deps
 
     - name: Run tests
-      run: pytest -v
+      run: pytest tests/ -v
 
     - name: Upload screenshots (if tests failed)
       if: failure()
