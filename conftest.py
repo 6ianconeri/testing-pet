@@ -8,7 +8,7 @@ from Pages.search_page import SearchPage
 @pytest.fixture(scope="session")
 def page():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch()
         context = browser.new_context(
             viewport={'width': 1920, 'height': 1080},
         )
