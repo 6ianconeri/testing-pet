@@ -36,11 +36,10 @@ pytest --alluredir=allure-results
 # С маркерами
 pytest -m ui
 pytest -m api
-pytest -m sql
 ```
 ## Дополнительные помощники в файле utils/helpers.py
 
-## Запуск с Docker с Allure
+## Запуск с Docker в связке с Allure
 ```bash
 docker build -t testing .
 docker run --rm -v /сюда указываем свой путь/reports/allure-report/:/reports/allure-report testing
