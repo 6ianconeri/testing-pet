@@ -6,7 +6,7 @@
 Фреймворк для автоматизации тестирования для UI и API с поддержкой SQL.
 Примеры тестов достаточно простые (не делал проект ради огромных тестов).\
 В данном проекте используется: модель POM(Page Object Model), запуск тестов в CI/CD - GitHub Actions, Allure отчеты,
-а так же использование Docker.
+а так же использование Docker. А так же поддерживается параллельный запуск тестов - инструкция ниже.
 
 ## Мой технологичесий стэк:
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -51,3 +51,14 @@ allure serve reports/allure-report
 ```
 ## Пример отчёта в Allure:
 ![Отчёт](https://allwebs.ru/images/2026/03/15/c79e388a065de6d5f67660cb10fd5880.png)
+
+## Параллельные запуски:
+```bash
+Обязательно установить requirements.txt, а именно: pip install pytest-xdist
+pytest -n 4 --dist=loadfile -v --alluredir=reports/allure-report
+Для того чтобы параллельные запуски работали в CI/CD - нужно в файле workflows/ci.yml установить:
+    - name: Run tests
+      run: |
+        pytest -n 2
+```
+
