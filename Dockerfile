@@ -1,19 +1,16 @@
-FROM python:3.11-slim
-
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1
-
-WORKDIR /app
-
-COPY requirements.txt .
-
-RUN pip install --no-cache-dir -r requirements.txt
-
-RUN playwright install chromium firefox webkit \
-    && playwright install-deps
-
+FROM python
 COPY . .
-
-CMD ["pytest", "-v", "--tb=short"]
+RUN mkdir -p reports/allure-report
+RUN apt-get update && apt-get install -y \
+    wget \
+    gnupg2 \
+    xvfb \
+    --no-install-recommends
+RUN pip install --no-cache-dir -r requirements.txt
+RUN playwright install \
+    && playwright install-deps
+RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt-get install -y ./google-chrome-stable_current_amd64.deb \
+    && rm google-chrome-stable_current_amd64.deb \
+    && rm -rf /var/lib/apt/lists/*
+CMD ["pytest", "--alluredir=reports/allure-report"]
