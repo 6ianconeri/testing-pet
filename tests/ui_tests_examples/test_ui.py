@@ -5,6 +5,7 @@ from playwright.sync_api import expect
 
 from Pages.main_page import MainPage
 from Pages.search_page import SearchPage
+from Popups.catalog_popup import CatalogPopup
 
 
 @pytest.mark.regression
@@ -30,3 +31,21 @@ def test_open_new_books(page, open_main_page):
     main_page.click_new_books()
     with allure.step("Заголовок страницы отображается как 'Новинки'"):
         expect(main_page.title_dashboard).to_have_text("Новинки")
+
+@pytest.mark.regression
+@pytest.mark.smoke
+@pytest.mark.ui
+@allure.title("Переход к жанру 'Детективы' через каталог")
+@allure.suite("UI тесты")
+def test_open_detective_genre_with_catalog(page, open_main_page):
+    main_page = MainPage(page)
+    catalog_popup = CatalogPopup(page)
+    main_page.click_catalog_button()
+    with allure.step("В поп-апе отображается заголовок 'Легкое чтение'"):
+        expect(catalog_popup.catalog_popup_genre_title.filter(has_text="Легкое чтение"))
+    with allure.step("В поп-апе под заголовком 'Легкое чтение' отображается поджанр 'Детективы'"):
+        expect(catalog_popup.catalog_popup_subgenre_title.filter(has_text="Детективы"))
+    catalog_popup.click_subgenre_link("Детективы")
+    with allure.step("Заголовок страницы отображается как 'Детективы'"):
+        expect(main_page.title_dashboard).to_have_text("детективы")
+

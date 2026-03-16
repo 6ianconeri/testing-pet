@@ -12,6 +12,11 @@ class Helpers:
         return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
 
     @staticmethod
+    def generate_random_age(min_age=18, max_age=60):
+        # Генерация случайного возраста
+        return random.randint(min_age, max_age)
+
+    @staticmethod
     def generate_random_email():
         # Генерация случайного email
         domains = ['gmail.com', 'yandex.ru', 'mail.ru', 'test.com']

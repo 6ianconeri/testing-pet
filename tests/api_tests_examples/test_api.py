@@ -3,6 +3,7 @@ import time
 import pytest
 import requests
 import allure
+from test_data import payloads
 
 BASE_URL = "https://httpbin.org/"
 BEARER_TOKEN = "bearer_token_123"
@@ -26,11 +27,11 @@ def test_api_get():
 def test_api_post():
     response = requests.post(
         f"{BASE_URL}post",
-            json={"name": "John", "age": 30}
+            json=payloads.USER_DATA
             )
     assert response.status_code == 200
-    assert response.json()["json"]["name"] == 'John'
-    assert response.json()["json"]["age"] == 30
+    assert response.json()["json"]["name"] == payloads.USER_DATA["name"]
+    assert response.json()["json"]["age"] == payloads.USER_DATA["age"]
     assert response.headers["content-type"] == "application/json"
 
 @pytest.mark.smoke

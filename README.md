@@ -8,7 +8,9 @@
 В данном проекте используется: модель POM(Page Object Model), запуск тестов в CI/CD - GitHub Actions, Allure отчеты,
 а так же использование Docker. А так же поддерживается параллельный запуск тестов - инструкция ниже.
 
-## Мой технологичесий стэк:
+Так же показан пример использования test_data(тестовых данных) и helpers(функций для генераций случайных значений).
+
+## Технологичесий стэк данного проекта:
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 | ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white) 
 | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) |
