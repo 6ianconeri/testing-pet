@@ -47,6 +47,7 @@ def test_open_detective_genre_with_catalog(page, main_page):
         expect(catalog_popup.catalog_popup_subgenre_title.filter(has_text="Детективы"))
     catalog_popup.click_subgenre_link("Детективы")
     with allure.step("Заголовок страницы отображается как 'Детективы'"):
+        page.wait_for_load_state("domcontentloaded")
         main_page.title_dashboard.wait_for(state="visible")
         expect(main_page.title_dashboard).to_have_text("детективы")
 
