@@ -1,21 +1,6 @@
-import allure
 import pytest
 import sqlite3
 
-from playwright.sync_api import sync_playwright
-
-# Пример фикстуры для запуска браузера с определенными настройками
-@pytest.fixture(scope="function")
-def page():
-    playwright = sync_playwright().start()
-    browser = playwright.chromium.launch(headless=True)
-    context = browser.new_context(
-        viewport={'width': 1920, 'height': 1080},
-    )
-    page = context.new_page()
-    yield page
-    browser.close()
-    playwright.stop()
 
 # Пример фикстуры для открытия основной страницы приложения
 @pytest.fixture
