@@ -13,7 +13,7 @@ from Popups.catalog_popup import CatalogPopup
 @pytest.mark.ui
 @allure.title("Поиск книги по названию")
 @allure.suite("UI тесты")
-def test_search_book(page, open_main_page):
+def test_search_book(page, main_page):
     main_page = MainPage(page)
     search_page = SearchPage(page)
     main_page.fill_search_input("Война и Мир")
@@ -26,7 +26,7 @@ def test_search_book(page, open_main_page):
 @pytest.mark.ui
 @allure.title("Открытие страницы 'Новинки' по нажатию")
 @allure.suite("UI тесты")
-def test_open_new_books(page, open_main_page):
+def test_open_new_books(page, main_page):
     main_page = MainPage(page)
     main_page.click_new_books()
     with allure.step("Заголовок страницы отображается как 'Новинки'"):
@@ -37,7 +37,7 @@ def test_open_new_books(page, open_main_page):
 @pytest.mark.ui
 @allure.title("Переход к жанру 'Детективы' через каталог")
 @allure.suite("UI тесты")
-def test_open_detective_genre_with_catalog(page, open_main_page):
+def test_open_detective_genre_with_catalog(page, main_page):
     main_page = MainPage(page)
     catalog_popup = CatalogPopup(page)
     main_page.click_catalog_button()
