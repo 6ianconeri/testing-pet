@@ -12,9 +12,11 @@ class BasePage:
 
     @allure.step("Проверка и исправление URL для страницы {value}")
     def redirect_old_url(self, value):
+        # TODO:
         """
-        Проверяет, что мы на правильном URL детективов.
+        Проверяет, что мы на правильном URL.
         Если нет - выполняет принудительный переход.
+        Убрать после фикса приложения
         """
         if "showroom" not in self.page.url:
             self.page.goto(f"https://www.litres.ru/showroom/{value}/",
