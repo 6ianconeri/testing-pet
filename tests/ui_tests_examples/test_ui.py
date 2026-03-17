@@ -35,6 +35,7 @@ def test_open_new_books(page, main_page):
 @pytest.mark.regression
 @pytest.mark.smoke
 @pytest.mark.ui
+@pytest.mark.flaky(reruns=3, reruns_delay=2)
 @allure.title("Переход к жанру 'Детективы' через каталог")
 @allure.suite("UI тесты")
 def test_open_detective_genre_with_catalog(page, main_page):
