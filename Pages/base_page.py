@@ -7,4 +7,4 @@ class BasePage:
 
     @property
     def title_dashboard(self):
-        return self.page.get_by_test_id("dashboard__title")
+        return self.page.locator("h1[data-testid='dashboard__title'] > div")

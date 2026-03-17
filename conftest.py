@@ -5,7 +5,7 @@ import sqlite3
 from playwright.sync_api import sync_playwright
 
 # Пример фикстуры для запуска браузера с определенными настройками
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def page():
     playwright = sync_playwright().start()
     browser = playwright.chromium.launch(headless=True)
