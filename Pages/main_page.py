@@ -15,7 +15,6 @@ class MainPage(BasePage):
 
     @allure.step("Ввести значение в поисковую строку '{value}'")
     def fill_search_input(self, value):
-        self.page.get_by_test_id("search__input").wait_for(state="visible")
         self.page.get_by_test_id("search__input").fill(value)
 
     @allure.step("Нажать кнопку поиска")
